@@ -1,0 +1,10 @@
+.dashboard {
+  padding: 2rem;
+  background-color: #ecf0f1;
+  flex-grow: 1;
+}
+
+.dashboard h1 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}

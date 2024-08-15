@@ -1,0 +1,11 @@
+/* .input-comentario {
+    width: 50%;
+} */
+
+.container-comentarios {
+    /* background-color: pink; */
+    width: 60%;
+    /* height: 400px; */
+    margin-left: auto;
+    margin-right: auto;
+}

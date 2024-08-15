@@ -1,0 +1,66 @@
+.item-chamado {
+    background-color: #fff; /* Fundo branco para os itens */
+    border: 1px solid #ddd; /* Borda leve */
+    border-radius: 4px; /* Bordas arredondadas */
+    margin-bottom: 1rem; /* Espaço entre os itens */
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    display: flex;
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 1rem; /* Espaço entre o número e o título */
+}
+
+.item-chamado:hover {
+    background-color: #f9f9f9; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.02); /* Leve efeito de zoom */
+}
+
+.item-link {
+    text-decoration: none;
+    color: #333; /* Cor do texto */
+    display: flex;
+    width: 100%; /* Garante que o link ocupe todo o item */
+    align-items: center; /* Alinha itens verticalmente dentro do link */
+}
+
+.item-number {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3d3d3d; /* Cor do número */
+    margin-right: 1rem; /* Espaço entre o número e o título */
+    display: flex;
+    align-items: center; /* Alinha verticalmente o número */
+}
+
+.item-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 1; /* Faz o título ocupar o máximo de espaço disponível */
+    display: flex;
+    align-items: center; /* Alinha verticalmente o título */
+}
+
+.item-details {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    /* gap: 1rem; Espaço entre as informações */
+    /* background-color: black; */
+}
+
+.status, .priority {
+    font-size: 0.9rem;
+    color: #555; /* Cor do texto das informações adicionais */
+    /* background-color: green; */
+    /* text-align: center; */
+    /* align-items: flex-end; */
+}
+
+.status {
+    color: #e74c3c; /* Cor para status */
+}
+
+.priority {
+    color: #3498db; /* Cor para prioridade */
+}

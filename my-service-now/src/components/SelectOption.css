@@ -1,0 +1,24 @@
+.container-select {
+    /* background-color: pink; */
+    display: flex;
+    /* gap: 0.5em; */
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.container-select select {
+    margin: 0px;
+    width: 200px;
+    /* background-color: red; */
+}
+
+.container-select label {
+    /* background-color: green; */
+    width: 120px;
+    font-weight: bold;
+}
+
+.container-select select, .container.select option {
+    padding: 0.5rem;
+    display: block;
+}

@@ -1,0 +1,35 @@
+.sidebar {
+  /* padding: 100px; */
+  align-self: flex-start;
+  /* background-color: yellow; */
+}
+
+
+.sidebar ul {
+  list-style: none;
+  margin-top: 5rem;
+}
+  
+/* Estiliza os itens da lista para parecerem botões */
+.sidebar ul li {
+  margin: 1rem 0;
+}
+  
+.sidebar ul li a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #16a085;
+}
+  
+/* Efeito de hover */
+.sidebar ul li a:hover {
+  background-color: #1abc9c;
+  transform: scale(1.05);
+}

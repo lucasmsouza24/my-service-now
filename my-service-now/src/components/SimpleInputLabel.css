@@ -1,0 +1,25 @@
+.simple-input-label-container {
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.simple-input-label-container input {
+    /* background-color: red; */
+    width: 180px;
+}
+
+.simple-input-label-container label {
+    /* background-color: green; */
+    width: 120px;
+    font-weight: bold;
+}
+
+.desc {
+    width: 100%;
+}
+
+.add-comentario {
+    width: 100%;
+}

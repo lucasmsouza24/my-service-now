@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.App {
+  display: flex;
+}
+
+.content {
+  margin-left: 80px;
+  padding: 2rem;
+  flex-grow: 1;
+  background-color: #ecf0f1;
+  min-height: 100vh;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: none;
+}
