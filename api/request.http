@@ -1,0 +1,9 @@
+POST http://localhost:3333/chamados
+
+###
+
+GET http://localhost:3333/chamados
+
+### 
+
+GET http://localhost:3333/chamados/1
