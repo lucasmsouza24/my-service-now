@@ -9,13 +9,14 @@ class ChamadosDB {
         AWS.config.update({ region: 'us-east-1' });
         
         this.dynamoDb = new AWS.DynamoDB.DocumentClient();
+        this.TableName = 'chamados';
     }
     
     // list all items
     async listAllItems() {
 
         const params = {
-            TableName: 'chamados'
+            TableName: this.TableName
         }
 
         try {
@@ -26,11 +27,35 @@ class ChamadosDB {
         }
     }
 
+    async listItemsByStatus(status) {
+
+        console.log(status)
+        
+        const params = {
+            TableName: this.TableName,
+            FilterExpression: '#status = :status',
+            ExpressionAttributeNames: {
+                '#status': 'status',  // Substituição para a palavra reservada
+            },
+            ExpressionAttributeValues: {
+                ':status': status,
+            },
+        };
+    
+        try {
+            const result = await this.dynamoDb.scan(params).promise();
+            return result.Items;
+        } catch (error) {
+            console.error('Erro ao escanear itens:', error);
+            return [];
+        }
+    }
+
     // returns item based on key
     async getChamadoById(numero_chamado) {
 
         const params = {
-            TableName: 'chamados',
+            TableName: this.TableName,
             Key: {
                 'numero_chamado': numero_chamado
             }
@@ -47,16 +72,30 @@ class ChamadosDB {
     // insert item on dynamodb
     async insertItem(chamado) {
         const params = {
-            TableName: tableName,
+            TableName: this.TableName,
             Item: chamado
         };
 
         try {
-            await dynamoDb.put(params).promise();
-            console.log('Item inserido com sucesso:', item);
-            return item;
+            await this.dynamoDb.put(params).promise();
+            console.log('Item inserido com sucesso:', chamado);
+            return chamado;
         } catch (error) {
             console.error('Erro ao inserir item:', error);
+        }
+    }
+
+    async count() {
+        const params = {
+            TableName: this.TableName,
+            Select: 'COUNT'
+        };
+
+        try {
+            const result = await this.dynamoDb.scan(params).promise();
+            return result.Count
+        } catch (error) {
+            console.log(error)
         }
     }
 

@@ -1,4 +1,15 @@
 POST http://localhost:3333/chamados
+Content-type: application/json
+
+{
+  "numero_chamado": "INC000001",
+  "titulo": "Título sugestivo",
+  "descricao": "Descrição bem detalhada",
+  "solicitante": "Lucas Mesquita",
+  "categoria": "Software",
+  "prioridade": "Baixa",
+  "status": "Novo"
+}
 
 ###
 
@@ -7,3 +18,11 @@ GET http://localhost:3333/chamados
 ### 
 
 GET http://localhost:3333/chamados/1
+
+### 
+
+GET http://localhost:3333/chamados/next
+
+### 
+
+GET http://localhost:3333/chamados?status=Em_andamento
