@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SelectOption from '../components/SelectOption';
 import SimpleInputLabel from '../components/SimpleInputLabel';
 import './CreateIncident.css'
+import axios from 'axios';
 
 function CreateIncident() {
     const category_options = ['Rede', 'Software', 'Hardware'];
@@ -9,12 +10,22 @@ function CreateIncident() {
     const status_options = ['Novo'];
 
     // state
-    const [numero_chamado, setNumeroChamado] = useState('INC000005')
+    const [numero_chamado, setNumeroChamado] = useState('')
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
     const [solicitante, setSolicitante] = useState('Lucas Mesquita');
     const [categoria, setCategoria] = useState(category_options[0])
     const [prioridade, setPrioridade] = useState(priority_options[0])
+    
+    useEffect(() => {
+        axios.get('http://localhost:3333/chamados/next').then((response) => {
+            const next_numero_chamado = response.data.next_id
+            setNumeroChamado(next_numero_chamado)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [])
 
     // Obter a data atual no formato YYYY-MM-DD hh:mm
     let now = new Date()
@@ -32,7 +43,13 @@ function CreateIncident() {
             prioridade,
             status: status_options[0]
         }
-        console.log(chamado)
+        
+        axios.post('http://localhost:3333/chamados', chamado).then((response) => {
+            console.log(response.data)
+            window.location.href = 'http://localhost:3000/incidents'
+        }).catch((err) => {
+            console.log(err)
+        })
     }
 
     return (

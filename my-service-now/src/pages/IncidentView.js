@@ -1,9 +1,27 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import './IncidentView.css'
 import ItemChamado from "../components/ItemChamado";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function IncidentView() {
+
+    const [listaChamados, setListaChamados] = useState([])
+
+    const location = useLocation();
+    const query = new URLSearchParams(useLocation().search);
+    const filter_status = query.get('status');
+
+    useEffect(() => {
+        console.log(filter_status)
+
+        axios.get(`http://localhost:3333/chamados${filter_status ? `?status=${filter_status}` : ''}`).then((response) => {
+            console.log(response.data)
+            setListaChamados(response.data)
+        })
+
+    }, [filter_status, location.search])
+
     return (
         <div className="incident-container">
             <h1>Lista de Incidentes</h1>
@@ -13,10 +31,9 @@ function IncidentView() {
             </Link>
 
             <div>
-                <ItemChamado id={1} number={'INC000100'} priority={'Alta'} status={'Em aberto'} title={'Extração'} key={1}/>
-                <ItemChamado id={1} number={'INC000200'} priority={'Baixa'} status={'Em Andamento'} title={'T2R'} key={2}/>
-                <ItemChamado id={1} number={'INC000300'} priority={'Média'} status={'Em andamento'} title={'Extração'} key={3}/>
-                <ItemChamado id={1} number={'INC000301'} priority={'Baixa'} status={'Em andamento'} title={'Correção'} key={4}/>
+                {listaChamados.map((chamado, index) => 
+                    <ItemChamado id={index} number={chamado.numero_chamado} priority={chamado.prioridade} status={chamado.status} title={chamado.titulo} key={index} />
+                )}
             </div>
         </div>
     )
